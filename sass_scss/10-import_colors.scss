@@ -1,9 +1,6 @@
-guillaume@ubuntu:~/$ cat 10-colors.scss
-/* All my colors */
 $red: #FF0000;
 $green: #00FF00;
 $blue: #0000FF;
-guillaume@ubuntu:~/$ sass 10-import_colors.scss | tail -n +3
 .red {
   color: #FF0000; }
 
@@ -11,5 +8,5 @@ guillaume@ubuntu:~/$ sass 10-import_colors.scss | tail -n +3
   color: #00FF00; }
 
 .blue {
-  color: #0000FF; }
-guillaume@ubuntu:~/$ 
+  color: #0000FF; 
+}
