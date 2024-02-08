@@ -1,9 +1,8 @@
-nav {
-  body{
+body{
     margin:0;
     padding:0;
-  }
-}
-nav body p{
+  &body p{
   margin:10px;
 }
+}
+
