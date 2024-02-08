@@ -1,3 +1,1 @@
-hasanali@ACC-DT-DE-3CY5:~/$ sass 0-debug_log.scss | head -n 0
-0-debug_log.scss:2 DEBUG: Hello world
-hasanali@ACC-DT-DE-3CY5:~/$ 
+@debug "Hello world";
