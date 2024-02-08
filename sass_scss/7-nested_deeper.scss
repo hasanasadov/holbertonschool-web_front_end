@@ -1,8 +1,7 @@
-guillaume@ubuntu:~/$ sass 7-nested_deeper.scss | tail -n +2
 body {
   font-size: 14px; }
   body h1 {
     font-size: 16px; }
     body h1.smaller {
-      font-size: 12px; }
-guillaume@ubuntu:~/$ 
+      font-size: 12px; 
+}
