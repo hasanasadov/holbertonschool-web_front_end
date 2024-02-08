@@ -1,6 +1,5 @@
-guillaume@ubuntu:~/$ sass 5-nested_child.scss | tail -n +2
 body {
   color: #3D3D3D; }
   body > .red {
-    color: #FF0000; }
-guillaume@ubuntu:~/$ 
+    color: #FF0000; 
+}
