@@ -1,7 +1,9 @@
+$color_1:#3d3d3d;
+$color_2:#6d6d6d;
 body {
-  color: #3D3D3D;
-  background-color: #6D6D6D; }
+  color: $color_1;
+  background-color: $color_2; }
 p {
-  color: #3D3D3D; }
+  color: $color_1; }
 h2 {
-  background-color: #6D6D6D; }
+  background-color: $color_2; }
