@@ -1,7 +1,7 @@
 /* All names */
 $list-names: julien john sam damian;
 
-@import '11-loop_photos'; // Importing the Sass file where the loop is defined
+@import '11-loop_photos'; 
 
 @each $name in $list-names {
   .photo-#{$name} {
