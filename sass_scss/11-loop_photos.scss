@@ -1,7 +1,4 @@
-guillaume@ubuntu:~/$ cat 11-photos.scss 
-/* All names */
 $list-names: julien john sam damian;
-guillaume@ubuntu:~/$ sass 11-loop_photos.scss | tail -n +3
 .photo-julien {
   background: image-url("photos/julien.jpg") no-repeat; }
 
@@ -12,5 +9,5 @@ guillaume@ubuntu:~/$ sass 11-loop_photos.scss | tail -n +3
   background: image-url("photos/sam.jpg") no-repeat; }
 
 .photo-damian {
-  background: image-url("photos/damian.jpg") no-repeat; }
-guillaume@ubuntu:~/$ 
+  background: image-url("photos/damian.jpg") no-repeat; 
+}
