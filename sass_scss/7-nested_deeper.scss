@@ -1,11 +1,9 @@
 body {
-  font-size: 14px; // Font size 14px assigned to all body tags
-
+  font-size: 14px; 
   h1 {
-    font-size: 16px; // Font size 16px assigned to h1 tags inside body tags
-
+    font-size: 16px; 
     &.smaller {
-      font-size: 12px; // Font size 12px assigned to h1 tags with class .smaller inside body tags
+      font-size: 12px; 
     }
   }
 }
