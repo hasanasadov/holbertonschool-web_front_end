@@ -1,2 +1,2 @@
-$sort: sort($list_to_sort); 
-@debug "Sorted list: #{$sort}";
+$sorted_list: sort($list_to_sort);
+@debug "Sorted List: #{$sorted_list}";
