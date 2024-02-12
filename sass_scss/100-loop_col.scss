@@ -1,27 +1,10 @@
-.col-1 {
-  width: 100%;
-  float: left;
-  box-sizing: border-box;
-  padding: 0 15px;
-}
+$columns: 4;
 
-.col-2 {
-  width: 50%;
-  float: left;
-  box-sizing: border-box;
-  padding: 0 15px;
-}
-
-.col-3 {
-  width: 33.3333333333%;
-  float: left;
-  box-sizing: border-box;
-  padding: 0 15px;
-}
-
-.col-4 {
-  width: 25%;
-  float: left;
-  box-sizing: border-box;
-  padding: 0 15px;
+@for $i from 1 through $columns {
+  .col-#{$i} {
+    width: percentage(1/$i);
+    float: left;
+    box-sizing: border-box;
+    padding: 0 15px; // Adjust padding as needed
+  }
 }
