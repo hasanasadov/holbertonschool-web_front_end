@@ -1,2 +1,9 @@
+$list_to_sort: "john", "anna", "zoe", "kim", "felicia", "carrie";
+
+$list_to_sort: to-list($list_to_sort);
+
 $list_to_sort: sort($list_to_sort);
+
+$list_to_sort: join($list_to_sort, " ");
+
 @debug "#{$list_to_sort}";
