@@ -1,0 +1,11 @@
+$h1-font-size: 20px;
+$small-screen-width: 320px;
+$h1-font-size-small-screen: 14px;
+
+h1 {
+  font-size: $h1-font-size; // Default font size for h1
+
+  @media screen and (max-width: $small-screen-width) {
+    font-size: $h1-font-size-small-screen; // Font size for smaller screens
+  }
+}
