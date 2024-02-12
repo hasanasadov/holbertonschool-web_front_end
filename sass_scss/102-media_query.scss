@@ -1,0 +1,30 @@
+$h1-font-size: 20px;
+$h1-font-size-medium: 18px;
+$h1-font-size-small: 16px;
+$h1-font-size-smallest: 14px;
+$text-color-small-screen: #1D1D1D;
+$small-screen-width-1: 960px;
+$small-screen-width-2: 640px;
+$small-screen-width-3: 320px;
+
+h1 {
+  font-size: $h1-font-size;
+
+  @media screen and (max-width: $small-screen-width-1) {
+    font-size: $h1-font-size-medium;
+  }
+
+  @media screen and (max-width: $small-screen-width-2) {
+    font-size: $h1-font-size-small;
+  }
+
+  @media screen and (max-width: $small-screen-width-3) {
+    font-size: $h1-font-size-smallest;
+  }
+}
+
+h1.small {
+  @media screen and (max-width: $small-screen-width-3) {
+    color: $text-color-small-screen;
+  }
+}
