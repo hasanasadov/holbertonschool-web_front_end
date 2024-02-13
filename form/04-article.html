@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" href="/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="03-styles.css">
+    <link rel="stylesheet" href="04-styles.css">
   </head>
   <body>
     <!– Header –>
@@ -87,7 +87,7 @@
                         <label for="your-last-name">Last Name</label>
                         <div class="form-field">
                             <span class="form-field-container">
-                                <input type="text" name="your-last-name" id="your-last-name" placeholder="e.g. Smith" pattern="[A-Za-zÀ-ž\s]{3,}" maxlength="40" autocomplete="on" accesskey="1" required>                              
+                                <input type="text" name="your-last-name" id="your-last-name" placeholder="e.g. Smith" pattern="[A-Za-zÀ-ž\s]{3,}" maxlength="40" autocomplete="on" accesskey="l" required>                              
                             </span>
                       </div>
                     </div>
@@ -109,7 +109,7 @@
                         <label for="your-title">Title</label>
                         <div class="form-field">
                         <span class="form-field-container">
-                            <textarea  name="your-comment" id="your-comment" placeholder="Write your comment here" minlength="10" accesskey="c" required cols="30" rows=""6>                              
+                            <textarea  type="text" name="your-title" id="your-title" placeholder="I loved that article" pattern="[A-Za-zÀ-ž\s]{4,}" maxlength="75" autocomplete="on" accesskey="t" required >                              
                         </span>
                         </div>
                     </div>
@@ -117,7 +117,9 @@
                     <div class="form-group col-2-3">
                         <label for="your-comment">Comment</label>
                         <div class="form-field">
-                        <span class="form-field-container"></span>
+                        <span class="form-field-container">
+                            <textarea  name="your-comment" id="your-comment" placeholder="Write your comment here" minlength="10" accesskey="c" required cols="30" rows=""6>                              
+                        </span>
                         </div>
                     </div>
 
