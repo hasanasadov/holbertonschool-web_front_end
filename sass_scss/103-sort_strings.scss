@@ -1,3 +1,5 @@
+$list_to_sort: john anna zoe kim felicia carrie;
+
 @function insertion-sort($list) {
   $length: length($list);
   $sorted_list: ();
