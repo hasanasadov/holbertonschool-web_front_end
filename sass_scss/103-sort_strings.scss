@@ -1,27 +1,23 @@
-$list_to_sort: john anna zoe kim felicia carrie;
 
-@function quicksort($list) {
-  @if length($list) <= 1 {
-    @return $list;
-  }
+@function bubble-sort($list) {
+  $n: length($list);
+  $sorted_list: $list;
 
-  $pivot: nth($list, ceil(length($list) / 2));
-  $less: ();
-  $greater: ();
+  @for $i from 1 through $n {
+    @for $j from 1 through ($n - $i) {
+      $current: nth($sorted_list, $j);
+      $next: nth($sorted_list, $j + 1);
 
-  @for $item in $list {
-    @if $item != $pivot {
-      @if $item < $pivot {
-        $less: append($less, $item);
-      } @else {
-        $greater: append($greater, $item);
+      @if $current > $next {
+        $sorted_list: set-nth($sorted_list, $j, $next);
+        $sorted_list: set-nth($sorted_list, $j + 1, $current);
       }
     }
   }
 
-  @return append(append(quicksort($less), $pivot), quicksort($greater));
+  @return $sorted_list;
 }
 
-$sorted_list: quicksort($list_to_sort);
+$sorted_list: bubble-sort($list_to_sort);
 
 @debug $sorted_list;
