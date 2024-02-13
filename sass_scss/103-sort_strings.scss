@@ -1,3 +1,4 @@
+$list_to_sort: "banana", "apple", "orange", "grape";
 @function bubble-sort-strings($list) {
   $n: length($list);
   $sorted-list: $list;
@@ -14,4 +15,4 @@
   @return $sorted-list;
 }
 $sorted_list: bubble-sort-strings($list_to_sort);
-@debug "#{$sorted_list}";
+@debug "Sorted list: #{$sorted_list}";
