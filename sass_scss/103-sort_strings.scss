@@ -1,17 +1,22 @@
-@function bubble-sort-strings($list) {
-  $n: length($list);
-  $sorted-list: $list;
-  @for $i from 1 through $n {
-    @for $j from 1 through ($n - $i) {
-      $current: nth($sorted-list, $j);
-      $next: nth($sorted-list, $j + 1);
-      @if $current > $next {
-        $sorted-list: set-nth($sorted-list, $j, $next);
-        $sorted-list: set-nth($sorted-list, $j + 1, $current);
-      }
+@function insertion-sort($list) {
+  $length: length($list);
+  $sorted_list: ();
+
+  @for $i from 1 through $length {
+    $value: nth($list, $i);
+    $j: $i - 1;
+
+    @while $j >= 0 and nth($sorted_list, $j) > $value {
+      $sorted_list: set-nth($sorted_list, $j + 1, nth($sorted_list, $j));
+      $j: $j - 1;
     }
+
+    $sorted_list: set-nth($sorted_list, $j + 1, $value);
   }
-  @return $sorted-list;
+
+  @return $sorted_list;
 }
-$sorted_list: bubble-sort-strings($list_to_sort);
-@debug "Sorted list: #{$sorted_list}";
+
+$sorted_list: insertion-sort($list_to_sort);
+
+@debug $sorted_list;
