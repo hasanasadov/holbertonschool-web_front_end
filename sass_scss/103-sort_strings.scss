@@ -1,2 +1,17 @@
-$sorted_list: sort($list_to_sort);
+@function bubble-sort-strings($list) {
+  $n: length($list);
+  $sorted-list: $list;
+  @for $i from 1 through $n {
+    @for $j from 1 through ($n - $i) {
+      $current: nth($sorted-list, $j);
+      $next: nth($sorted-list, $j + 1);
+      @if $current > $next {
+        $sorted-list: set-nth($sorted-list, $j, $next);
+        $sorted-list: set-nth($sorted-list, $j + 1, $current);
+      }
+    }
+  }
+  @return $sorted-list;
+}
+$sorted_list: bubble-sort-strings($list_to_sort);
 @debug "#{$sorted_list}";
