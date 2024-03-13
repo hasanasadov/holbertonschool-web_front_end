@@ -18,31 +18,37 @@
 
         <script type='application/javascript'>
         function createFamilyTree() {
-            $('body').append('<table></table>');
-            $('table').append('<thead></thead>', '<tbody></tbody>');
-            $('thead').append('<tr></tr>');
-            $('tbody').append('<tr></tr>', '<tr></tr>', '<tr></tr>');
-            $('thead tr').append('<th></th>', '<th></th>');
-            $('tbody tr').append('<td></td>', '<td></td>');
-            $('th:first').text('Firstname');
-            $('th:last').text('Lastname');
+          $("body").append("<table></table>");
+          $("table").append("<thead></thead>");
+          $("table").append("<tbody></tbody>");
+          /*DATA HEAD*/
+          $("thead").append("<tr></tr>");
+          $("thead > tr").append("<th></th>", "<th></th>");
+          $("tr > th:first-child").append("Firstname");
+          $("tr > th:last-child").append("Lastname");
         }
 
         function addNewMember(firstName, lastName) {
-            $('tbody').append('<tr></tr>');
-            $('tbody tr:last').append('<td>' + firstName, '</td><td>' + lastName, '</td><td>(x)</td>');
-            $('tbody td:last').css('background-color', 'orange');
-            $('tbody td:last').click(function () {
-                $(this).parent().remove();
-            })
+          let tr = $("<tr></tr>");
+          let x = $("<td>(x)</td>");
+
+          x.css("background-color", "orange");
+          x.click(function() {
+            $(tr).remove()
+          });
+
+          tr.append("<td>" + firstName + "</td>");
+          tr.append("<td>" + lastName + "</td>");
+          tr.append(x);
+          $("tbody").append(tr);
         }
 
         createFamilyTree();
-        addNewMember('Guillaume', 'Salva');
-        addNewMember('Arielle', 'Snizt');
-        addNewMember('Fanette', 'Snizt');
-        addNewMember('Gerard', 'Snizt');
-        addNewMember('Victor', 'Salva');
+        addNewMember("Guillaume", "Salva");
+        addNewMember("Arielle", "Snizt");
+        addNewMember("Fanette", "Snizt");
+        addNewMember("Gerard", "Snizt");
+        addNewMember("Victor", "Salva");
         </script>
 
     </body>
