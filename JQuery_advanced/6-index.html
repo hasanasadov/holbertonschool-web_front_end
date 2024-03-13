@@ -18,38 +18,60 @@
 
         <script type='application/javascript'>
         function createFamilyTree() {
-            $('body').append('<table></table>');
-            $('table').append('<thead></thead>', '<tbody></tbody>');
-            $('thead').append('<tr></tr>');
-            $('tbody').append('<tr></tr>', '<tr></tr>', '<tr></tr>');
-            $('thead tr').append('<th></th>', '<th></th>');
-            $('tbody tr').append('<td></td>', '<td></td>');
-            $('th:first').text('Firstname');
-            $('th:last').text('Lastname');
+          $("body").append("<table></table>");
+          $("table").append("<thead></thead>");
+          $("table").append("<tbody></tbody>");
+          /*DATA HEAD*/
+          $("thead").append("<tr></tr>");
+          $("thead > tr").append("<th></th>", "<th></th>");
+          $("tr > th:first-child").append("Firstname");
+          $("tr > th:last-child").append("Lastname");
         }
 
-        function addNewMember(firstName, lastName) {
-            $('tbody').append('<tr></tr>');
-            $('tbody tr:last').append('<td>' + firstName, '</td><td>' + lastName, '</td><td>(x)</td>');
-            $('tbody td:last').css('background-color', 'orange');
-            $('tbody td:last').click(function () {
-                $(this).parent().remove();
-            })
+        function addNewMember(firstName, lastName, position) {
+          let tr = $("<tr></tr>");
+          let x = $("<td>(x)</td>");
+
+          x.css("background-color", "orange");
+          x.click(function() {
+            $(tr).remove()
+          });
+
+          tr.append("<td>" + firstName + "</td>");
+          tr.append("<td>" + lastName + "</td>");
+          tr.append(x);
+
+          if (position === 'before') {
+            $("tbody").prepend(tr);
+          } else {
+            $("tbody").append(tr);
+          }
         }
+
         function createForm() {
-            $('table').before(`
-            <input type='text' name='firstName'>
-            <input type='text' name='lastName'>
-            <select>
-                <option value='before'>Before</option>
-                <option value='after'>After</option>
-            </select>
-            <input type='submit'>
-            `);
-            $('input:last').click(function () {
-                addNewMember($('input:first').val(), $('input:nth-of-type(2)').val(), $('select').val());
-            })
+          let selecOption = $("<select></select>");
+          let buttonSubmit = $("<input type='submit'>");
+
+          selecOption.append(
+            "<option value='before'>Before</option>",
+            "<option value='after'>After</option>"
+          );
+
+          buttonSubmit.click(function() {
+            let val1 = $("input").first().val();
+            let val2 = $("input:nth-of-type(2)").val();
+            let val3 = selecOption.val();
+
+            addNewMember(val1, val2, val3);
+          });
+
+          $("table").before(
+            "<input type='text'>",
+            "<input type='text'>",
+            selecOption,
+            buttonSubmit);
         }
+
         createFamilyTree();
         createForm();
         </script>
