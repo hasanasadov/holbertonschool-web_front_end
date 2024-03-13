@@ -17,41 +17,55 @@
     <body>
         <script type='application/javascript'>
         function createSearchForm() {
-            $('body').append(`
-            <input type='text'>
-            <input type='submit'>
-            <ul></ul>
-            `);
-            $('input:last').click(function () {
-                queryWikipedia($('input:first').val());
-            })
+          let inputText = $("<input type='text'>");
+          let inputSubmit = $("<input type='submit'>");
+          let ul = $("<ul></ul>");
+
+          inputSubmit.click(function() {
+            let inputValue = $("input").first().val();
+            queryWikipedia(inputValue);
+          });
+
+          $("body").append(
+            inputText,
+            inputSubmit,
+            ul
+          );
         }
 
         function addNewArticle(id, title, snippet) {
-            $('ul').append('<li><p><span>' + id + ' - <b>' + title +
-                '</b></span><p>' + snippet);
+          let li = $("<li></li>");
+          let p1 = $("<p></p>");
+          let p2 = $("<p></p>");
+          let span = $("<span></span>");
+          let b = $("<b></b>");
+
+          b.append(title);
+          span.append(id + " - ", b);
+          p1.append(span);
+          p2.append(snippet);
+          li.append(p1, p2)
+
+          $("ul").append(li);
         }
 
         function queryWikipedia(search) {
-			var url = "https://en.wikipedia.org/w/api.php"; 
-			var params = {
-				action: "query",
-				list: "search",
-				srsearch: search,
-				format: "json"
-			};
+          let url = "https://en.wikipedia.org/w/api.php?origin=*";
+          let params = {
+            action: "query",
+            list: "search",
+            srsearch: search,
+            format: "json"
+          }
 
-			url = url + "?origin=*";
-			Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
-
-			fetch(url)
-				.then(function(response){return response.json();})
-				.then(function(response) {
-					response.query.search.forEach(function ({ pageid, title, snippet }) {
-						addNewArticle(pageid, title, snippet);
-					})
-				})
-				.catch(function(error){console.log(error);});
+          Object.keys(params).forEach(function(key) {
+            url += "&" + key + "=" + params[key];
+          });
+          $.get(url, function(data) {
+            data.query.search.forEach(item => {
+              addNewArticle(item.pageid, item.title, item.snippet);
+            })
+          })
         }
 
         createSearchForm();
