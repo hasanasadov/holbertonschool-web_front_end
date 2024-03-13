@@ -17,68 +17,73 @@
     <body>
 
         <script type='application/javascript'>
-        $(document).ready(function () {
-            function addPostRow(data) {
-                $("body").append(`
-                        <p>
-                            <span>Post created with id ${data.id}, title: ${data.title}, author: ${data.author}</span>
-                        </p>
-                    `);
-            };
-            function listPosts() {
-                $.get('http://localhost:3000/posts')
-                    .then(function (data) {
-                        data.forEach(function (item) {
-                            addPostRow(item);
-                        })
-                    })
-                    .catch(function () {
-                        window.alert('Server Error');
-                    })
-            }
+        function addPostRow(data) {
+          let p = $("<p></p>");
+          let span = $("<span></span>");
 
-            function buildForm() {
-                $("body").append(`
-                        <form class="myForm">
-                            <div>
-                                <label for="author">Author</label>
-                                <input type="text" id="author">
-                            </div>
-                            <div>
-                                <label for="title">Title</label>
-                                <input type="textarea" id="title">
-                            </div>
-                            <input class="formBtn" type="submit" value="Submit">
-                        </form>
-                    `);
-                $(".formBtn").click(function (e) {
-                    e.preventDefault();
-                    sendForm();
-                    return false;
-                })
-            }
+          span.append("Post created with id " + data.id + ", title: " + data.title + ", author: " + data.author);
+          p.append(span);
+          $("body").append(p);
+        }
 
-            function sendForm() {
-                $(".myForm").append("<p>About to send the query to the API</p>")
-                let data = {
-                    author: $("#author").val(),
-                    title: $("#title").val()
-                };
-                $.ajax({
-                    type: "POST",
-                    url: "http://localhost:3000/posts",
-                    data: data,
-                    success: function (res) {
-                        addPostRow(res);
-                    },
-                    error: function () {
-                        alert("Error sending the POST query");
-                    }
-                })
-            };
-            listPosts();
-            buildForm();
-        });
+        function listPosts() {
+          $.get("http://localhost:3000/posts")
+          .done(function(data) {
+            data.forEach(item => {
+              addPostRow(item);
+            });
+          })
+          .fail(function() {
+            alert("Server Error");
+          })
+        }
+
+        function buildForm() {
+          let form = $("<form></form>");
+          let div1 = $("<div></div>");
+          let div2 = $("<div></div>");
+          let submit = $("<input type='submit'>");
+          
+          div1.append("<label for='author'>Author</label>");
+          div1.append("<input type='text' id='author'>");
+          div2.append("<label for='title'>Title</label>");
+          div2.append("<textarea id='title'></textarea>");
+          form.submit(function(e) {
+            e.preventDefault();
+            sendForm();
+          });
+
+          form.append(
+            div1,
+            div2,
+            submit
+          );
+
+          $("body").append(form);
+        }
+
+        function sendForm() {
+          let val1 = $("input").val();
+          let val2 = $("textarea").val();
+          let data = {"title": val1, "author": val2};
+
+          $("form").after("About to send the query to the API");
+          $.ajax
+          ({
+            type: "POST",
+            url: "http://localhost:3000/posts",
+            data: data,
+            success: function (data) {
+              addPostRow(data);
+            },
+            error: function(error) {
+              alert("Error sending the POST query");
+            }
+          });
+        }
+
+        listPosts();
+        buildForm();
         </script>
 
     </body>
